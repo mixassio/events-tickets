@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
-import { join } from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthService } from "./auth/auth.service";
 import { UserService } from "./user/user.service";
@@ -15,12 +14,12 @@ import { UserService } from "./user/user.service";
       logging: false,
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
     }),
-    AuthModule,
+    // AuthModule,
     UserModule,
   ],
   providers: [
-    UserService,
-    AuthService,
+    // UserService,
+    // AuthService,
   ],
 })
 export class AppModule {}
