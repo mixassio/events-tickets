@@ -14,11 +14,11 @@ import { UserService } from "./user/user.service";
       logging: false,
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
     }),
-    // AuthModule,
+    AuthModule,
     UserModule,
   ],
   providers: [
-    // UserService,
+    //UserService,
     // AuthService,
   ],
 })
