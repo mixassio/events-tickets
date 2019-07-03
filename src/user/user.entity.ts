@@ -11,4 +11,6 @@ export class User {
   @Column('email')
   email: string;
 
+  @Column()
+  token: string;
 }
