@@ -4,6 +4,7 @@ import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthService } from "./auth/auth.service";
 import { UserService } from "./user/user.service";
+import { EventModule } from './event/event.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { UserService } from "./user/user.service";
     }),
     AuthModule,
     UserModule,
+    EventModule,
   ],
   providers: [
     //UserService,
