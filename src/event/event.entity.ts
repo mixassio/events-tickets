@@ -9,9 +9,8 @@ export class Event {
   @Column({ length: 50, unique: true })
   title: string;
 
-/*
   @ManyToMany(type => User)
     @JoinTable()
     users: User[];
-*/
+
 }

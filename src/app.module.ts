@@ -2,9 +2,8 @@ import { Module } from '@nestjs/common';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthService } from "./auth/auth.service";
-import { UserService } from "./user/user.service";
 import { EventModule } from './event/event.module';
+import { TicketModule } from './ticket/ticket.module';
 
 @Module({
   imports: [
@@ -18,10 +17,8 @@ import { EventModule } from './event/event.module';
     AuthModule,
     UserModule,
     EventModule,
+    TicketModule,
   ],
-  providers: [
-    //UserService,
-    // AuthService,
-  ],
+  providers: [],
 })
 export class AppModule {}
