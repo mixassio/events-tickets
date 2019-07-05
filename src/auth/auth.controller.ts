@@ -16,7 +16,7 @@ export class AuthController {
     }
 
     const user = await this.userService.getUserByUsername(body.username);
-    
+
     if (user) {
       if (await this.userService.compareHash(body.password, user.passwordHash)) {
         return res.status(HttpStatus.OK).json(await this.authService.createToken(user.id, user.username));
@@ -28,8 +28,8 @@ export class AuthController {
 
   @Post('register')
   async registerUser(@Response() res: any, @Body() body: User) {
-    if (!(body && body.username && body.password)) {
-      return res.status(HttpStatus.FORBIDDEN).json({ message: 'Username and password are required!' });
+    if (!body || !body.username || !body.password || !body.email) {
+      return res.status(HttpStatus.FORBIDDEN).json({ message: 'Username, password and email are required!' });
     }
 
     let user = await this.userService.getUserByUsername(body.username);
