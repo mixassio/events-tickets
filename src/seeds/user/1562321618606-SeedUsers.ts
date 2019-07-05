@@ -9,8 +9,8 @@ export class SeedUsers1562321618606 implements MigrationInterface {
         private readonly userService: UserService) {}
 
     public async up(queryRunner: QueryRunner): Promise<any> {
-        UserSeed.forEach(async (user: User) => await this.userService.createUser(user))
-    
+        const promises = UserSeed.map((user: User) => this.userService.createUser(user))
+        await Promise.all(promises);
     }
 
     public async down(queryRunner: QueryRunner): Promise<any> {
