@@ -15,7 +15,7 @@ export class User {
   @Column({ length: 100, nullable: true })
   passwordHash: string|undefined;
 
-  @Column({ length: 500 })
+  @Column({ length: 100, nullable: true })
   email: string;
 
   @OneToMany(type => Ticket, ticket => ticket.user)
