@@ -1,17 +1,24 @@
-import {getRepository, MigrationInterface, QueryRunner} from "typeorm";
-import { UserSeed } from "./user.seed";
-import { User } from '../../user/user.entity'
+import { getRepository, MigrationInterface, QueryRunner } from 'typeorm';
+import { UserSeed } from './user.seed';
+import { User } from '../../user/user.entity';
+import * as bcrypt from 'bcrypt';
 
+export class SeedUsers1562314550633 implements MigrationInterface {
+  protected async prepareUserData(user: User): Promise<User> {
+    user.passwordHash = await bcrypt.hash(user.password, 10);
+    user.password = undefined;
 
-export class SeedUsers1562314550633 implements MigrationInterface 
+    return user;
+  }
 
-{
-    
-    public async up(queryRunner: QueryRunner): Promise<any> {
-        const userRepository = getRepository(User);
-        await userRepository.save(UserSeed);
-    }
+  public async up(queryRunner: QueryRunner): Promise<any> {
+    const userRepository = getRepository(User);
 
-    public async down(queryRunner: QueryRunner): Promise<any> {
-    }
+    UserSeed.map(async (user: User) => {
+      const userToStore = await this.prepareUserData(user);
+      await userRepository.save(userToStore);
+    });
+  }
+
+  public async down(queryRunner: QueryRunner): Promise<any> {}
 }
