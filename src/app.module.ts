@@ -4,6 +4,7 @@ import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EventModule } from './event/event.module';
 import { TicketModule } from './ticket/ticket.module';
+import { RegistrationModule } from './registration/registration.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { TicketModule } from './ticket/ticket.module';
     UserModule,
     EventModule,
     TicketModule,
+    RegistrationModule,
   ],
   providers: [],
 })
