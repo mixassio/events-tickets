@@ -2,5 +2,5 @@ module.exports = {
   "type": "sqlite",
   database: 'database.db',
   entities: ['src/**/*.entity{.ts,.js}'],
-  migrations: ["src/seeds/user/*.ts"]
+  migrations: ["src/seeds/**/*.ts"]
 }
