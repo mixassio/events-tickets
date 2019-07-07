@@ -10,6 +10,12 @@ import { AuthService } from '../auth/auth.service';
 import { UserService } from '../user/user.service';
 import { ApiService } from './api.service';
 
+interface RequestBody {
+  id: string;
+  method: string;
+  params: any;
+}
+
 @Controller('api')
 export class ApiController {
   constructor(
@@ -19,7 +25,7 @@ export class ApiController {
   ) {}
 
   @Post()
-  async index(@Response() res: any, @Body() body: any) {
+  async index(@Response() res: any, @Body() body: RequestBody) {
     if (!(body && body.method)) {
       return res.status(HttpStatus.FORBIDDEN).json({ message: 'bad request' });
     }
@@ -31,8 +37,9 @@ export class ApiController {
     }
 
     const { method, params, id } = body;
-    return res
-      .status(HttpStatus.OK)
-      .json(await this.apiService[method](params, id));
+    const result = await this.apiService[method](params);
+    const response = { ...result, id };
+
+    return res.status(HttpStatus.OK).json(response);
   }
 }
