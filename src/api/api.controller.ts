@@ -19,7 +19,7 @@ export class ApiController {
   ) {}
 
   @Post()
-  async chooseAction(@Response() res: any, @Body() body: any) {
+  async index(@Response() res: any, @Body() body: any) {
     if (!(body && body.method)) {
       return res.status(HttpStatus.FORBIDDEN).json({ message: 'bad request' });
     }
