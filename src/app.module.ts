@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { EventModule } from './event/event.module';
 import { TicketModule } from './ticket/ticket.module';
 import { RegistrationModule } from './registration/registration.module';
+import { ApiModule } from './api/api.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { RegistrationModule } from './registration/registration.module';
     EventModule,
     TicketModule,
     RegistrationModule,
+    ApiModule,
   ],
   providers: [],
 })
