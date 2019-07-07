@@ -1,18 +1,17 @@
 export const EventSeed = [
   {
-    title: "Fitness day"
+    title: 'Fitness day',
   },
   {
-    title: "Gym day"
+    title: 'Gym day',
   },
   {
-    title: "Beer day"
+    title: 'Beer day',
   },
   {
-    title: "Rok-n-roll day"
+    title: 'Rok-n-roll day',
   },
   {
-    title: "Kirkorov day"
-  }
+    title: 'Kirkorov day',
+  },
 ];
-

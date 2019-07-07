@@ -10,14 +10,14 @@ export class User {
   username: string;
 
   @Column({ length: 100, nullable: true })
-  password: string|undefined;
+  password: string | undefined;
 
   @Column({ length: 100, nullable: true })
-  passwordHash: string|undefined;
+  passwordHash: string | undefined;
 
   @Column({ length: 100, nullable: true })
   email: string;
 
   @OneToMany(type => Ticket, ticket => ticket.user)
-    tickets: Ticket[];
+  tickets: Ticket[];
 }

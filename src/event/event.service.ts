@@ -7,7 +7,8 @@ import { Event } from './event.entity';
 export class EventService {
   constructor(
     @InjectRepository(Event)
-    private readonly eventRepository: Repository<Event>) {}
+    private readonly eventRepository: Repository<Event>,
+  ) {}
 
   async findAll(): Promise<Event[]> {
     return await this.eventRepository.find();
@@ -17,7 +18,7 @@ export class EventService {
     const result = await this.eventRepository.find({ title: title });
     return result[0];
   }
-  
+
   async createEvent(event: Event): Promise<Event> {
     return this.eventRepository.save(event);
   }

@@ -8,8 +8,8 @@ export class Registration {
   id: number;
 
   @OneToMany(type => Ticket, ticket => ticket.registration)
-    tickets: Ticket[];
+  tickets: Ticket[];
 
   @OneToMany(type => Event, event => event.registration)
-    events: Event[];
+  events: Event[];
 }

@@ -1,5 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn, ManyToMany, JoinTable, ManyToOne } from 'typeorm';
-import {Ticket} from '../ticket/ticket.entity';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  ManyToMany,
+  JoinTable,
+  ManyToOne,
+} from 'typeorm';
+import { Ticket } from '../ticket/ticket.entity';
 import { Registration } from '../registration/registration.entity';
 
 @Entity()
@@ -11,10 +18,9 @@ export class Event {
   title: string;
 
   @ManyToMany(type => Ticket)
-    @JoinTable()
-    tickets: Ticket[];
+  @JoinTable()
+  tickets: Ticket[];
 
   @ManyToOne(type => Registration, registration => registration.events)
-    registration: Registration;
-
+  registration: Registration;
 }

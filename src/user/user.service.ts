@@ -10,7 +10,8 @@ export class UserService {
 
   constructor(
     @InjectRepository(User)
-    private readonly userRepository: Repository<User>) {}
+    private readonly userRepository: Repository<User>,
+  ) {}
 
   async getUsers(): Promise<User[]> {
     return await this.userRepository.find();
@@ -28,11 +29,14 @@ export class UserService {
     return this.userRepository.save(user);
   }
 
-  async getHash(password: string|undefined): Promise<string> {
-      return bcrypt.hash(password, this.saltRounds);
+  async getHash(password: string | undefined): Promise<string> {
+    return bcrypt.hash(password, this.saltRounds);
   }
 
-  async compareHash(password: string|undefined, hash: string|undefined): Promise<boolean> {
+  async compareHash(
+    password: string | undefined,
+    hash: string | undefined,
+  ): Promise<boolean> {
     return bcrypt.compare(password, hash);
   }
 }

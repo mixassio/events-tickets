@@ -4,7 +4,7 @@ import { UserService } from '../user/user.service';
 
 @Injectable()
 export class AuthService {
-  constructor(private readonly userService: UserService) { }
+  constructor(private readonly userService: UserService) {}
 
   async createToken(id: number, username: string) {
     const expiresIn = 60 * 60;
@@ -16,7 +16,7 @@ export class AuthService {
   }
 
   async validateUser(signedUser): Promise<boolean> {
-    if (signedUser&&signedUser.username) {
+    if (signedUser && signedUser.username) {
       return Boolean(this.userService.getUserByUsername(signedUser.username));
     }
 
