@@ -14,6 +14,7 @@ import { UserModule } from '../user/user.module';
   imports: [UserModule],
   providers: [AuthService, JwtStrategy],
   controllers: [AuthController],
+  exports: [AuthService]
 })
 export class AuthModule implements NestModule {
   public configure(consumer: MiddlewareConsumer) {
