@@ -1,12 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import { AuthService } from '../auth/auth.service';
 import { UserService } from '../user/user.service';
+import { EventService } from '../event/event.service';
+import { TicketService } from '../ticket/ticket.service';
+import { RegistrationService } from '../registration/registration.servise';
+
 
 @Injectable()
 export class ApiService {
   constructor(
     private readonly authService: AuthService,
     private readonly userService: UserService,
+    private readonly eventService: EventService,
+    private readonly ticketService: TicketService,
+    private readonly registrationService: RegistrationService,
   ) {}
 
   async authUser({ username, password }) {
@@ -23,4 +30,14 @@ export class ApiService {
     }
     return { error: 'User not found' };
   }
+
+  async startLoad() {
+    const users = await this.userService.getUsers();
+    const events = await this.eventService.findAll();
+    const tickets = await this.ticketService.findAll();
+    const registers = await this.registrationService.findAll();
+    const result = { users, events, tickets, registers };
+    return { result, error: '' }
+  }
 }
+
