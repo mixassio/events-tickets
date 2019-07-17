@@ -39,5 +39,14 @@ export class ApiService {
     const result = { users, events, tickets, registers };
     return { result, error: '' }
   }
+
+  async registerToEvent({ eventId, ticketId}) {
+    try {
+      await this.registrationService.createRegistation({ eventId, ticketId})
+    } catch (error) {
+      return { error };
+    }
+    return { result: 'done' };
+  };
 }
 

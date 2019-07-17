@@ -14,5 +14,11 @@ export class RegistrationService {
     return await this.registrationRepository.find();
   }
 
+  async createRegistation({ ticketId, eventId }): Promise<Registration> {
+    const reg = new Registration();
+    reg.event = eventId;
+    reg.ticket = ticketId;
+    return this.registrationRepository.save(reg);
+  }
 }
 

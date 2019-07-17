@@ -5,6 +5,7 @@ import {
   ManyToMany,
   JoinTable,
   ManyToOne,
+  OneToMany,
 } from 'typeorm';
 import { Ticket } from '../ticket/ticket.entity';
 import { Registration } from '../registration/registration.entity';
@@ -21,6 +22,6 @@ export class Event {
   @JoinTable()
   tickets: Ticket[];
 
-  @ManyToOne(type => Registration, registration => registration.events)
-  registration: Registration;
+  @OneToMany(type => Registration, registration => registration.event)
+  registration: Registration[];
 }

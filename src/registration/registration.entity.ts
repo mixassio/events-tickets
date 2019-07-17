@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
 import { Ticket } from '../ticket/ticket.entity';
 import { Event } from '../event/event.entity';
 
@@ -7,9 +7,9 @@ export class Registration {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToMany(type => Ticket, ticket => ticket.registration)
-  tickets: Ticket[];
+  @ManyToOne(type => Ticket, ticket => ticket.registration)
+  ticket: Ticket;
 
-  @OneToMany(type => Event, event => event.registration)
-  events: Event[];
+  @ManyToOne(type => Event, event => event.registration)
+  event: Event;
 }
